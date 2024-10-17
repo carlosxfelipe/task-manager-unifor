@@ -8,20 +8,22 @@
   <body>
     <div class="container">
       <h1>Minhas Tarefas</h1>
-      <a href="/create"><button>Criar Nova Tarefa</button></a>
+      <a href="/create"><button class="success">Criar Nova Tarefa</button></a>
       <ul>
         <% tarefas.forEach(tarefa => { %>
         <li>
           <h3><%= tarefa.titulo %></h3>
           <p><%= tarefa.descricao %></p>
           <p>Criado em: <%= tarefa.data_criacao %></p>
-          <a href="/edit/<%= tarefa.tarefa_id %>"><button>Editar</button></a>
+          <a href="/edit/<%= tarefa.tarefa_id %>"
+            ><button type="button" class="warning">Editar</button></a
+          >
           <form
             action="/delete/<%= tarefa.tarefa_id %>"
             method="POST"
             style="display: inline"
           >
-            <button type="submit">Excluir</button>
+            <button class="danger" type="submit">Excluir</button>
           </form>
         </li>
         <% }); %>

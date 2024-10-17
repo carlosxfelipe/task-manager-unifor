@@ -13,7 +13,7 @@ h1 {
   color: #333;
 }
 
-button {
+button.success {
   background-color: #4caf50;
   color: white;
   padding: 10px 20px;
@@ -21,11 +21,47 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button.success:hover {
   background-color: #45a049;
+}
+
+button.warning {
+  background-color: #ffcc00;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+button.warning:hover {
+  background-color: #e6b800;
+}
+
+button.danger {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+button.danger:hover {
+  background-color: #e60000;
 }
 
 form {
   display: flex;
   flex-direction: column;
+}
+
+textarea {
+  border-radius: 5px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
 }

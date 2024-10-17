@@ -11,16 +11,19 @@
       <form action="/edit/<%= tarefa.tarefa_id %>" method="POST">
         <label for="titulo">Título:</label>
         <input
+          class="mt-10"
           type="text"
           name="titulo"
           value="<%= tarefa.titulo %>"
           required
         />
 
-        <label for="descricao">Descrição:</label>
-        <textarea name="descricao" rows="5"><%= tarefa.descricao %></textarea>
+        <label class="mt-10" for="descricao">Descrição:</label>
+        <textarea class="mt-10" name="descricao" rows="5">
+<%= tarefa.descricao %></textarea
+        >
 
-        <button type="submit">Salvar</button>
+        <button type="submit" class="success mt-20">Salvar</button>
       </form>
     </div>
   </body>

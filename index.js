@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const connection = require("./database/connection");
+const { format } = require("date-fns");
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -10,7 +11,12 @@ app.set("view engine", "ejs");
 app.get("/", (req, res) => {
   connection.query("SELECT * FROM tarefa", (err, results) => {
     if (err) throw err;
-    res.render("index", { tarefas: results });
+    const tarefas = results.map((tarefa) => ({
+      ...tarefa,
+      data_criacao: format(new Date(tarefa.data_criacao), "dd/MM/yyyy HH:mm"),
+    }));
+
+    res.render("index", { tarefas });
   });
 });
 

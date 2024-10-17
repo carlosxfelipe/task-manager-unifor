@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Minhas Tarefas</h1>
+      <a href="/create"><button>Criar Nova Tarefa</button></a>
+      <ul>
+        <% tarefas.forEach(tarefa => { %>
+        <li>
+          <h3><%= tarefa.titulo %></h3>
+          <p><%= tarefa.descricao %></p>
+          <p>Criado em: <%= tarefa.data_criacao %></p>
+          <a href="/edit/<%= tarefa.tarefa_id %>"><button>Editar</button></a>
+          <form
+            action="/delete/<%= tarefa.tarefa_id %>"
+            method="POST"
+            style="display: inline"
+          >
+            <button type="submit">Excluir</button>
+          </form>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+  </body>
+</html>

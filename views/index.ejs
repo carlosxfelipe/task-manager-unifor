@@ -15,6 +15,11 @@
           <h3><%= tarefa.titulo %></h3>
           <p><%= tarefa.descricao %></p>
           <p>Criado em: <%= tarefa.data_criacao %></p>
+          <p>
+            Última edição: <%= tarefa.data_edicao ? tarefa.data_edicao : "Nunca"
+            %>
+          </p>
+
           <a href="/edit/<%= tarefa.tarefa_id %>"
             ><button type="button" class="warning">Editar</button></a
           >

@@ -14,6 +14,10 @@ app.get("/", (req, res) => {
     const tarefas = results.map((tarefa) => ({
       ...tarefa,
       data_criacao: format(new Date(tarefa.data_criacao), "dd/MM/yyyy HH:mm"),
+      // Última edição
+      data_edicao: tarefa.data_edicao
+        ? format(new Date(tarefa.data_edicao), "dd/MM/yyyy HH:mm")
+        : null,
     }));
 
     res.render("index", { tarefas });
@@ -49,7 +53,8 @@ app.post("/edit/:id", (req, res) => {
   const { id } = req.params;
   const { titulo, descricao } = req.body;
   const query =
-    "UPDATE tarefa SET titulo = ?, descricao = ? WHERE tarefa_id = ?";
+    // "UPDATE tarefa SET titulo = ?, descricao = ? WHERE tarefa_id = ?";
+    "UPDATE tarefa SET titulo = ?, descricao = ?, data_edicao = NOW() WHERE tarefa_id = ?";
   connection.query(query, [titulo, descricao, id], (err, result) => {
     if (err) throw err;
     res.redirect("/");

@@ -47,6 +47,8 @@ Na raiz da pasta deve haver o arquivo index.js que faz o processamento do servid
          data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
          data_finalizacao DATETIME
      );
+
+     ALTER TABLE tarefa ADD data_edicao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
      ```
 
 4. **Configurar a conexão com o banco de dados:**

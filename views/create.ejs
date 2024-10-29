@@ -17,6 +17,22 @@
 
         <button class="success mt-20" type="submit">Criar</button>
       </form>
+      <form
+        class="mt-10"
+        action="/create/csv"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <label for="csvfile">Upload CSV de Tarefas:</label>
+        <input
+          class="mt-20"
+          type="file"
+          name="csvfile"
+          accept=".csv"
+          required
+        />
+        <button class="success mt-20" type="submit">Enviar CSV</button>
+      </form>
     </div>
   </body>
 </html>

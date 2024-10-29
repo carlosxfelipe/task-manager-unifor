@@ -2,7 +2,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const connection = require("./database/connection");
 const { format } = require("date-fns");
+const multer = require("multer");
+const csv = require("csv-parser");
+const fs = require("fs");
+
 const app = express();
+const upload = multer({ dest: "uploads/" });
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("public"));
@@ -68,6 +73,25 @@ app.post("/delete/:id", (req, res) => {
     if (err) throw err;
     res.redirect("/");
   });
+});
+
+// Novo código para o upload e processamento do arquivo CSV
+app.post("/create/csv", upload.single("csvfile"), (req, res) => {
+  const tarefas = [];
+
+  fs.createReadStream(req.file.path)
+    .pipe(csv())
+    .on("data", (row) => {
+      const { titulo, descricao } = row;
+      tarefas.push([titulo, descricao]);
+    })
+    .on("end", () => {
+      const query = "INSERT INTO tarefa (titulo, descricao) VALUES ?";
+      connection.query(query, [tarefas], (err, result) => {
+        if (err) throw err;
+        res.redirect("/");
+      });
+    });
 });
 
 app.listen(3000, () => {

@@ -16,14 +16,14 @@ Na raiz da pasta deve haver o arquivo index.js que faz o processamento do servid
 
    - Primeiro, clone o repositório para o seu ambiente local utilizando o comando:
      ```bash
-     git clone git@github.com:carlosxfelipe/task-manager-unifor.git
+     git clone git@github.com:carlosxfelipe/task-manager.git
      ```
 
 2. **Instalar as dependências do projeto:**
 
    - Navegue para o diretório do projeto:
      ```bash
-     cd task-manager-unifor
+     cd task-manager
      ```
    - Instale as dependências do projeto utilizando o `npm`:
      ```bash
